@@ -12,6 +12,9 @@
 
 # testing
 /coverage
+/test-results
+/playwright-report
+/tests
 
 # next.js
 /.next/
@@ -46,3 +49,5 @@ next-env.d.ts
 .cursor-scratchpad
 
 *storybook.log
+
+/old
