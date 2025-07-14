@@ -6,7 +6,7 @@ const supportedBrowsers = {
   webkit: devices['Desktop Safari']
 };
 
-const selectedBrowser = process.env.PLAYWRIGHT_BROWSER || 'chromium';
+const selectedBrowser = (process.env.PLAYWRIGHT_BROWSER || 'chromium') as keyof typeof supportedBrowsers;
 
 export default defineConfig({
   testDir: './tests',
