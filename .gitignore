@@ -33,8 +33,17 @@ yarn-error.log*
 # cursor
 .cursor-scratchpad
 
-# legacy
+# legacy (build artifacts from before monorepo reorganization)
 /old
+/.next/
+/out/
+/build/
+/dist/
+*.tsbuildinfo
+/storybook-static/
+/playwright-report/
+/coverage/
+/test-results/
 
 # =============================================================================
 # FRONTEND (Next.js React App)
