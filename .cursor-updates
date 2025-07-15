@@ -9,3 +9,4 @@
 - Modified the starter template to use Supabase as the default database with comprehensive integration including optimized Prisma schema, Supabase client configuration, and utility functions for auth, storage, and real-time features.
 - Enhanced frontend to follow gold standard React + TypeScript practices with shadcn/ui and Headless UI integration, comprehensive TypeScript interfaces, reusable components, custom hooks, and optimized Next.js configuration.
 - Reorganized project into monorepo structure with separate frontend and backend folders, including dedicated package.json files, TypeScript configurations, and comprehensive documentation for each service.
+- Moved Playwright configuration to frontend directory and added E2E testing dependencies and scripts to properly organize testing tools with the web application they're designed to test.
