@@ -34,9 +34,11 @@ cd raph-ai-starter
 # Install root dependencies
 npm install
 
-# Copy environment template
-cp .env.example .env.local
-# Edit .env.local with your actual values
+# Copy environment templates (service-specific setup)
+cp .env.example .env
+cp frontend/.env.example frontend/.env  
+cp backend/.env.example backend/.env
+# Edit each .env file with your actual values
 ```
 
 ### 2. Setup Backend
@@ -54,7 +56,7 @@ npm run db:migrate
 npm run dev
 ```
 
-### 3. Setup Frontend
+### 4. Setup Frontend
 
 ```bash
 cd frontend
