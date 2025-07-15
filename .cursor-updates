@@ -11,3 +11,4 @@
 - Reorganized project into monorepo structure with separate frontend and backend folders, including dedicated package.json files, TypeScript configurations, and comprehensive documentation for each service.
 - Moved Playwright configuration to frontend directory and added E2E testing dependencies and scripts to properly organize testing tools with the web application they're designed to test.
 - Organized environment variables by creating service-specific .env.example files (frontend/.env.example for public variables, backend/.env.example for sensitive server variables) and updated root .env.example as overview with setup instructions.
+- Updated .gitignore to reflect monorepo structure with service-specific ignore patterns for frontend (Next.js, Storybook, Playwright) and backend (Node.js, Prisma, uploads) directories.

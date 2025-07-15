@@ -1,5 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# =============================================================================
+# ROOT LEVEL
+# =============================================================================
+
 # dependencies
 /node_modules
 /.pnp
@@ -10,44 +14,99 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-/test-results
-/playwright-report
-/tests
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# env files (can opt-in for committing if needed)
+# environment files
 .env
 .env.local
 .env.staging
 .env.production
 
-# vercel
-.vercel
+# misc
+.DS_Store
+*.pem
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
+# cursor
 .cursor-scratchpad
 
-*storybook.log
-
+# legacy
 /old
+
+# =============================================================================
+# FRONTEND (Next.js React App)
+# =============================================================================
+
+# dependencies
+frontend/node_modules
+frontend/.pnp
+frontend/.pnp.*
+
+# next.js build artifacts
+frontend/.next/
+frontend/out/
+frontend/build/
+
+# environment files
+frontend/.env
+frontend/.env.local
+frontend/.env.staging
+frontend/.env.production
+
+# testing
+frontend/coverage/
+frontend/test-results/
+frontend/playwright-report/
+frontend/playwright/.cache/
+
+# typescript
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+
+# storybook
+frontend/storybook-static/
+frontend/*storybook.log
+
+# vercel
+frontend/.vercel
+
+# =============================================================================
+# BACKEND (Node.js API)
+# =============================================================================
+
+# dependencies
+backend/node_modules
+backend/.pnp
+backend/.pnp.*
+
+# build artifacts
+backend/dist/
+backend/build/
+
+# environment files
+backend/.env
+backend/.env.local
+backend/.env.staging
+backend/.env.production
+
+# testing
+backend/coverage/
+backend/test-results/
+
+# typescript
+backend/*.tsbuildinfo
+
+# database
+backend/prisma/migrations/dev.db*
+backend/sqlite.db*
+
+# logs
+backend/logs/
+backend/*.log
+
+# uploads
+backend/uploads/
+backend/temp/
