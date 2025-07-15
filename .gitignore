@@ -14,6 +14,10 @@
 !.yarn/releases
 !.yarn/versions
 
+# package managers
+.npm
+.pnpm-store/
+
 # environment files
 .env
 .env.local
@@ -32,6 +36,13 @@ yarn-error.log*
 
 # cursor
 .cursor-scratchpad
+.vscode/
+
+# IDE
+.idea/
+*.swp
+*.swo
+.vs/
 
 # legacy (build artifacts from before monorepo reorganization)
 /old
@@ -44,6 +55,13 @@ yarn-error.log*
 /playwright-report/
 /coverage/
 /test-results/
+
+# cache
+.cache/
+.eslintcache
+.stylelintcache
+.parcel-cache/
+.webpack/
 
 # =============================================================================
 # FRONTEND (Next.js React App)
@@ -119,3 +137,9 @@ backend/*.log
 # uploads
 backend/uploads/
 backend/temp/
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+tmp/
