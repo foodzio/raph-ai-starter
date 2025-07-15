@@ -19,9 +19,6 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 
-  // External packages for server components
-  serverExternalPackages: ['@prisma/client'],
-
   // Optimize bundle
   experimental: {
     // Enable modern bundling
@@ -84,4 +81,4 @@ const nextConfig: NextConfig = {
   output: 'standalone',
 };
 
-export default nextConfig;
+export default nextConfig; 

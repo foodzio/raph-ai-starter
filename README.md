@@ -1,131 +1,295 @@
-# 🚀 Next.js Modern Stack Template
+# Raph AI Starter - Monorepo
 
-A Next.js template that combines commonly used tools and libraries for building full-stack web applications. This stack is specifically designed to be optimized for AI coding assistants like Cursor.
+A modern full-stack starter template with separate frontend and backend architectures, built with cutting-edge technologies for rapid AI application development.
 
-## 🎯 Overview
+## 🏗️ Architecture Overview
 
-This template includes [Next.js 14](https://nextjs.org/) with the App Router, [Supabase](https://supabase.com) for the database, [Resend](https://resend.com) for transactional emails, and optional integrations with various AI providers and AWS services.
+This project follows a **monorepo structure** with clearly separated frontend and backend concerns:
 
-> ⚠️ **Note**: This is my personal template with tools that I personally have experience with and think are solid options for building modern full-stack web application. Your preferences very likely differ, so feel free to fork and modify it for your own use. I won't be accepting pull requests for additional features, but I'll be happy to help you out if you have any questions.
+```
+raph-ai-starter/
+├── frontend/          # Next.js frontend application
+├── backend/           # Node.js backend services
+├── .env.example       # Environment variables template
+├── package.json       # Root workspace configuration
+├── README.md          # This file
+└── docs/              # Project documentation
+```
 
-## ✨ Features
+## 🚀 Quick Start
 
-### 🏗️ Core Architecture
+### Prerequisites
 
-- [**Next.js 14**](https://nextjs.org/) - React framework with App Router
-- [**TypeScript**](https://www.typescriptlang.org/) - Type safety throughout
-- [**tRPC**](https://trpc.io/) - End-to-end type-safe APIs
-- [**Prisma**](https://www.prisma.io/) - Database ORM and schema management
-- [**NextAuth.js**](https://next-auth.js.org/) - Authentication with Prisma adapter
-- [**Supabase**](https://supabase.com) - Postgres database with realtime and auth
+- Node.js 18+ and npm
+- PostgreSQL database or Supabase account
+- Environment variables configured
 
-### 🎨 UI & Styling
-
-- [**Tailwind CSS**](https://tailwindcss.com/) - Utility-first CSS framework
-- [**Framer Motion**](https://www.framer.com/motion/) - Animation library
-- [**Lucide Icons**](https://lucide.dev/) - Icon set
-- Dark mode with Tailwind CSS
-
-### 🛠️ Development Tools
-
-- [**Storybook**](https://storybook.js.org/) - Component development environment
-- [**Geist Font**](https://vercel.com/font) - Typography by Vercel
-
-### 🤖 AI & Background Jobs
-
-- Multiple AI integrations available:
-  - [OpenAI](https://openai.com) - GPT-4 and o-series models
-  - [Anthropic](https://anthropic.com) - Sonnet-3.5
-  - [Perplexity](https://perplexity.ai) - Web search models
-  - [Groq](https://groq.com) - Fast inference
-- [**Inngest**](https://www.inngest.com/) - Background jobs and scheduled tasks
-
-### 🔧 Infrastructure & Services
-
-- [**Resend**](https://resend.com) - Email delivery
-- [**AWS S3**](https://aws.amazon.com/s3/) - File storage
-- [**Supabase**](https://supabase.com) - Primary database
-  (Note that I don't directly use the supabase client in this template, so you can switch out supabase with other database providers via the DATABASE_URL and DIRECT_URL environment variables.)
-
-### 🔔 Additional Features
-
-- [**react-toastify**](https://fkhadra.github.io/react-toastify/) - Toast notifications
-- Utility functions for common operations
-- TypeScript and ESLint configuration included
-
-## 🚀 Getting Started
-
-1. Fork this repository
-2. Install dependencies:
+### 1. Clone and Setup
 
 ```bash
+# Clone the repository
+git clone <repository-url>
+cd raph-ai-starter
+
+# Install root dependencies
 npm install
+
+# Copy environment template
+cp .env.example .env.local
+# Edit .env.local with your actual values
 ```
 
-3. Copy `.env.example` to `.env` and configure your environment variables
-4. Set up your database:
+### 2. Setup Backend
 
 ```bash
-npx prisma migrate dev
-```
+cd backend
 
-5. Start the development server:
+# Install dependencies
+npm install
 
-```bash
+# Set up database
+npm run db:migrate
+
+# Start backend development server
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to see your app.
+### 3. Setup Frontend
+
+```bash
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start frontend development server
+npm run dev
+```
+
+### 4. Access Applications
+
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:3001
+- **Storybook**: http://localhost:6006 (run `npm run storybook` in frontend)
+
+## 🎯 Tech Stack
+
+### Frontend (`/frontend`)
+- **Framework**: Next.js 15.1.0 with App Router
+- **Language**: TypeScript with strict mode
+- **Styling**: Tailwind CSS + shadcn/ui + Headless UI
+- **State**: React Query + tRPC client
+- **Auth**: NextAuth.js integration
+- **Development**: Storybook for component development
+
+### Backend (`/backend`) 
+- **Runtime**: Node.js with TypeScript
+- **Database**: PostgreSQL with Prisma ORM + Supabase
+- **API**: tRPC for type-safe APIs
+- **Auth**: NextAuth.js + Supabase Auth
+- **Jobs**: Inngest for background processing
+- **AI**: OpenAI, Anthropic, Groq integrations
+- **Email**: Resend for transactional emails
+- **Storage**: Supabase Storage + AWS S3
 
 ## 📁 Project Structure
 
-- `app/` - Next.js app router pages and API routes
-- `src/`
-  - `components/` - UI components
-  - `lib/` - Utilities and configurations
-    - `api/` - tRPC routers
-    - `utils/` - Shared utilities
-  - `stories/` - Storybook files
-- `prisma/` - Database schema
+### Frontend Structure
+```
+frontend/
+├── src/
+│   ├── app/           # Next.js app router
+│   ├── components/    # React components
+│   ├── hooks/         # Custom React hooks
+│   └── lib/           # Frontend utilities
+├── .storybook/        # Storybook configuration
+├── tailwind.config.ts # Styling configuration
+└── package.json       # Frontend dependencies
+```
+
+### Backend Structure
+```
+backend/
+├── src/
+│   ├── app/api/       # API route handlers
+│   └── lib/           # Backend services & utilities
+├── prisma/            # Database schema
+├── inngest.config.ts  # Background jobs config
+└── package.json       # Backend dependencies
+```
+
+## 🔧 Environment Configuration
+
+Create a `.env.local` file in the root with these variables:
+
+```bash
+# Database (Supabase)
+DATABASE_URL="postgresql://postgres.PROJECT_REF:[PASSWORD]@aws-0-[region].pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1"
+DIRECT_URL="postgresql://postgres.PROJECT_REF:[PASSWORD]@aws-0-[region].pooler.supabase.com:5432/postgres"
+
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL="https://your-project.supabase.co"
+NEXT_PUBLIC_SUPABASE_ANON_KEY="your-supabase-anon-key"
+SUPABASE_SERVICE_ROLE_KEY="your-supabase-service-role-key"
+
+# Authentication
+NEXTAUTH_URL="http://localhost:3000"
+NEXTAUTH_SECRET="your-secret-key-at-least-32-chars"
+
+# Email
+RESEND_API_KEY="re_123456789"
+EMAIL_FROM="noreply@example.com"
+
+# AI Services
+OPENAI_API_KEY="sk-your-openai-api-key"
+ANTHROPIC_API_KEY="sk-ant-your-anthropic-api-key"
+GROQ_API_KEY="your-groq-api-key"
+
+# Background Jobs
+INNGEST_EVENT_KEY="your-inngest-event-key"
+
+# Storage (optional - if not using Supabase Storage)
+AWS_ACCESS_KEY_ID="your-aws-access-key"
+AWS_SECRET_ACCESS_KEY="your-aws-secret-access-key"
+AWS_REGION="us-west-2"
+BUCKET_NAME="your-bucket-name"
+```
+
+## 🚀 Development
+
+### Running Both Services
+
+From the root directory:
+
+```bash
+# Terminal 1: Backend
+cd backend && npm run dev
+
+# Terminal 2: Frontend  
+cd frontend && npm run dev
+
+# Terminal 3: Storybook (optional)
+cd frontend && npm run storybook
+```
+
+### Available Scripts
+
+**Root Level:**
+- `npm run dev:frontend` - Start frontend development
+- `npm run dev:backend` - Start backend development
+- `npm run build` - Build both frontend and backend
+- `npm run lint` - Lint both projects
+
+**Frontend (`/frontend`):**
+- `npm run dev` - Start Next.js development server
+- `npm run build` - Build for production
+- `npm run storybook` - Start component development environment
+
+**Backend (`/backend`):**
+- `npm run dev` - Start Node.js development server
+- `npm run db:migrate` - Run database migrations
+- `npm run db:studio` - Open Prisma Studio
+
+## 🎨 Features
+
+### 🔐 Authentication
+- **Multiple Auth Methods**: Email/password, OAuth providers
+- **Session Management**: Secure session handling with NextAuth.js
+- **Supabase Integration**: Direct Supabase auth for real-time features
+- **Protected Routes**: Automatic route protection
+
+### 🗄️ Database & API
+- **Type-Safe APIs**: End-to-end type safety with tRPC
+- **Database ORM**: Prisma with PostgreSQL/Supabase
+- **Real-time**: Supabase real-time subscriptions
+- **Migrations**: Automated database schema management
+
+### 🎨 UI & Styling
+- **Modern Components**: shadcn/ui + Headless UI for accessibility
+- **Dark Mode**: Built-in dark/light theme switching
+- **Responsive Design**: Mobile-first responsive layouts
+- **Component Library**: Storybook for component development
+
+### 🤖 AI Integration
+- **Multiple Providers**: OpenAI, Anthropic, Groq support
+- **Type-Safe**: Fully typed AI client integrations
+- **Background Processing**: Queue AI tasks with Inngest
+
+### 📧 Communication
+- **Email Templates**: React-based email templates
+- **Transactional Email**: Reliable delivery with Resend
+- **Real-time**: WebSocket support via Supabase
+
+### 🚀 Performance
+- **Optimized Builds**: Next.js optimizations + code splitting
+- **Image Optimization**: Automatic image optimization
+- **Caching**: Smart caching strategies
+- **Background Jobs**: Async processing with Inngest
+
+## 📚 Documentation
+
+- [Frontend Documentation](./frontend/README.md) - Next.js frontend setup and development
+- [Backend Documentation](./backend/README.md) - Backend API and services
+- [Supabase Setup Guide](./SUPABASE_SETUP.md) - Complete Supabase integration guide
+
+## 🛠️ Development Tips
+
+1. **Monorepo Workflow**: Each service has its own dependencies and can be developed independently
+2. **Type Safety**: Changes to backend API types automatically flow to frontend
+3. **Component Development**: Use Storybook for isolated component development
+4. **Database Changes**: Always create migrations for schema changes
+5. **Environment Variables**: Keep sensitive variables out of version control
 
 ## 🚀 Deployment
 
-This template is optimized for deployment on [Vercel](https://vercel.com).
-
-### Database Setup
-
-1. Create a new Supabase project at [supabase.com](https://supabase.com)
-2. Get your database connection strings from Supabase:
-   - Project Settings → Database
-   - Copy both the URI (for `DATABASE_URL`) and Direct Connection (for `DIRECT_URL`)
-
-### Vercel Setup
-
-1. Push your code to GitHub
-2. Go to [vercel.com/new](https://vercel.com/new)
-3. Import your repository
-4. Configure the following environment variables:
-   - `DATABASE_URL` - Your Supabase database URL
-   - `DIRECT_URL` - Your Supabase direct connection URL
-   - `NEXTAUTH_SECRET` - Generate with `openssl rand -base64 32`
-   - `NEXTAUTH_URL` - Your production URL (e.g., https://your-app.vercel.app)
-   - Add any other variables from `.env.example` that you're using
-5. Deploy!
-
-### Post-Deployment
-
-1. Run database migrations in the Vercel deployment:
-
+### Frontend Deployment (Vercel/Netlify)
 ```bash
-npx vercel env pull .env.production.local  # Pull production env vars
-npx prisma migrate deploy                  # Deploy migrations to production
+cd frontend
+npm run build
+# Deploy the .next folder
 ```
 
-2. Set up your custom domain in Vercel (optional):
-   - Go to your project settings
-   - Navigate to Domains
-   - Add your domain and follow the DNS configuration instructions
+### Backend Deployment (Railway/Render/Heroku)
+```bash
+cd backend  
+npm run build
+# Deploy with your preferred platform
+```
 
-## 📝 License
+### Full-Stack Deployment
+- **Vercel**: Deploy frontend directly, API routes included
+- **Docker**: Use provided Dockerfiles for containerization
+- **Monorepo**: Some platforms support monorepo deployments
 
-MIT License
+## 🔒 Security
+
+- **Input Validation**: Zod schemas for all API inputs
+- **Authentication**: Secure session management
+- **Environment Variables**: Proper secret management
+- **CORS**: Configured for secure cross-origin requests
+- **Headers**: Security headers configured in Next.js
+
+## 📊 Monitoring
+
+- **Error Handling**: Comprehensive error boundaries
+- **Logging**: Structured logging throughout
+- **Health Checks**: API health check endpoints
+- **Performance**: Built-in Next.js analytics support
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes in the appropriate frontend/backend directory
+4. Ensure tests pass and types check
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with modern React, Next.js, and Node.js best practices
+- Inspired by T3 Stack and other modern full-stack templates
+- Uses industry-standard tools and patterns for scalability
